@@ -1,0 +1,18 @@
+{
+  "name": "ipic",
+  "version": "1.0.0",
+  "description": "Ipic lite version",
+  "homepage": "https://github.com/afeiship/ipic",
+  "author": {
+    "name": "afei",
+    "email": "1290657123@qq.com"
+  },
+  "scripts": {
+    "start": "electron src/index.js"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^5.0.5"
+  }
+}

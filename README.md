@@ -1,0 +1,8 @@
+# ipic
+> Ipic lite version.
+
+
+## resources
+- https://toolinbox.net/iPic/
+- https://www.cnblogs.com/savokiss/p/8744807.html
+- https://www.w3cschool.cn/electronmanual/electronmanual-clipboard.html
