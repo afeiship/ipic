@@ -1,16 +1,23 @@
 require('./components/clipboard');
 require('./components/uploader');
 require('./components/notification');
+require('./components/file');
 
 const { miaotu, wln } = require('./components/icons');
 const { app, Tray } = require('electron');
 
 module.exports = nx.declare('ipic.App', {
+  properties: {
+    filepath: function() {
+      return this._clipboard.filepath();
+    }
+  },
   statics: {
     init: function() {
       this._clipboard = new ipic.Clipboard();
       this._uploader = new ipic.Uploader();
       this._notification = new ipic.Notification();
+      this._file = new ipic.File();
       this._changed = false;
     },
     start: function() {
@@ -28,12 +35,12 @@ module.exports = nx.declare('ipic.App', {
     },
     clipWatch: function() {
       this._clipRes = this._clipboard.watch('image-changed', () => {
-        this.active();
+        this.filepath ? this.active() : this.deactive();
       });
     },
     trayWatch: function() {
       this._tray.on('click', () => {
-        const filepath = this._clipboard.filepath();
+        const filepath = this.filepath;
         if (filepath) {
           const data = this._uploader.buildData(filepath);
           this._tray.setImage(miaotu.normal);
