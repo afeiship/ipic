@@ -2,8 +2,10 @@ require('./components/clipboard');
 require('./components/uploader');
 require('./components/notification');
 
+const { miaotu, wln } = require('./components/icons');
 const { app, Tray } = require('electron');
-const path = require('path');
+
+console.log(miaotu, wln);
 
 module.exports = nx.declare('ipic.App', {
   statics: {
@@ -14,27 +16,25 @@ module.exports = nx.declare('ipic.App', {
     },
     start: function() {
       app.on('ready', () => {
-        this._tray = new Tray(path.join(__dirname, 'assets/mt_deactive@4x.png'));
+        this._tray = new Tray(miaotu.deactive);
         this.clipWatch();
         this.trayWatch();
       });
     },
     clipWatch: function() {
       this._clipRes = this._clipboard.watch('image-changed', () => {
-        this._tray.setImage(path.join(__dirname, 'assets/mt_active@4x.png'));
+        this._tray.setImage(miaotu.active);
       });
     },
     trayWatch: function() {
       this._tray.on('click', () => {
         const filepath = this._clipboard.filepath();
         const data = this._uploader.buildData(filepath);
-        this._tray.setImage(path.join(__dirname, 'assets/mt_normal@4x.png'));
+        this._tray.setImage(miaotu.normal);
         this._uploader.upload(data).then((res) => {
           this._clipboard.text = res;
-          this._tray.setImage(path.join(__dirname, 'assets/mt_deactive@4x.png'));
-          this._notification.notify({
-            icon: path.join(__dirname, 'assets/wl_icn.png')
-          });
+          this._tray.setImage(miaotu.deactive);
+          this._notification.notify({ icon: wln.active });
         });
       });
     }
