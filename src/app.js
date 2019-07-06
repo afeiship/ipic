@@ -4,7 +4,7 @@ require('./components/notification');
 require('./components/file');
 
 const { miaotu, wln } = require('./components/icons');
-const { app, Tray } = require('electron');
+const { app, Menu, Tray } = require('electron');
 
 module.exports = nx.declare('ipic.App', {
   properties: {
@@ -19,17 +19,25 @@ module.exports = nx.declare('ipic.App', {
       this._notification = new ipic.Notification();
       this._file = new ipic.File();
       this._changed = false;
-      this.config();
     },
     start: function() {
       app.on('ready', () => {
         this._tray = new Tray(miaotu.deactive);
         this.clipWatch();
         this.trayWatch();
+        this.setContextMenu();
       });
     },
-    config: function() {
-      app.dock.hide();
+    setContextMenu: function() {
+      const contextMenu = Menu.buildFromTemplate([
+        {
+          label: 'Quit',
+          click: () => {
+            app.quit();
+          }
+        }
+      ]);
+      this._tray.setContextMenu(contextMenu);
     },
     active: function() {
       this._tray.setImage(miaotu.active);
