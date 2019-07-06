@@ -9,7 +9,7 @@
   },
   "scripts": {
     "icns": "node build/icns.js",
-    "pack:osx": "node build/production.js",
+    "pack:osx": "node build/osx.js",
     "pack": "npm run pack:osx",
     "dist": "electron-builder",
     "start": "electron index.js"

@@ -1,5 +1,6 @@
 const packager = require('electron-packager');
 
+// https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#extend-info
 packager({
   dir: '.',
   platform: 'darwin',
