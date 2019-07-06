@@ -10,6 +10,17 @@ module.exports = nx.declare('ipic.App', {
   properties: {
     filepath: function() {
       return this._clipboard.filepath();
+    },
+    trayActive: {
+      get: function() {
+        return this._trayActive;
+      },
+      set: function(inValue) {
+        const statusImg = inValue ? miaotu.active : miaotu.deactive;
+        this._tray.setImage(statusImg);
+        this.setContextMenu(inValue);
+        this._trayActive = inValue;
+      }
     }
   },
   statics: {
@@ -23,46 +34,52 @@ module.exports = nx.declare('ipic.App', {
     start: function() {
       app.on('ready', () => {
         this._tray = new Tray(miaotu.deactive);
+        this.trayActive = false;
         this.clipWatch();
-        this.trayWatch();
-        this.setContextMenu();
       });
     },
-    setContextMenu: function() {
-      const contextMenu = Menu.buildFromTemplate([
+    setContextMenu: function(inValue) {
+      this._trayContextMenu = Menu.buildFromTemplate([
+        {
+          label: 'Upload',
+          enabled: inValue,
+          click: () => {
+            this.upload();
+          }
+        },
         {
           label: 'Quit',
           click: () => {
+            this._tray.destroy();
             app.quit();
           }
         }
       ]);
-      this._tray.setContextMenu(contextMenu);
+      this._tray.setContextMenu(this._trayContextMenu);
     },
     active: function() {
-      this._tray.setImage(miaotu.active);
+      this.trayActive = true;
+      this._tray.popUpContextMenu();
     },
     deactive: function() {
-      this._tray.setImage(miaotu.deactive);
+      this.trayActive = false;
     },
     clipWatch: function() {
       this._clipRes = this._clipboard.watch('image-changed', () => {
         this.filepath ? this.active() : this.deactive();
       });
     },
-    trayWatch: function() {
-      this._tray.on('click', () => {
-        const filepath = this.filepath;
-        if (filepath) {
-          const data = this._uploader.buildData(filepath);
-          this._tray.setImage(miaotu.normal);
-          this._uploader.upload(data).then((res) => {
-            this.deactive();
-            this._clipboard.text = res;
-            this._notification.notify({ icon: wln.active });
-          });
-        }
-      });
+    upload: function() {
+      const filepath = this.filepath;
+      if (filepath) {
+        const data = this._uploader.buildData(filepath);
+        this._tray.setImage(miaotu.normal);
+        this._uploader.upload(data).then((res) => {
+          this.deactive();
+          this._clipboard.text = res;
+          this._notification.notify({ icon: wln.active });
+        });
+      }
     }
   }
 });
