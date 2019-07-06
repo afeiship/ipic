@@ -9,8 +9,7 @@
   },
   "scripts": {
     "icns": "node build/icns.js",
-    "clean": "rm -rf dist",
-    "pack:osx": "electron-packager . --platform=darwin --out=./dist --icon=./src/assets/bird.icns --overwrite",
+    "pack:osx": "node build/production.js",
     "pack": "npm run pack:osx",
     "dist": "electron-builder",
     "start": "electron index.js"
