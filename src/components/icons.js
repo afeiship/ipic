@@ -7,7 +7,9 @@ module.exports = {
     deactive: path.join(__dirname, '../assets/mt_deactive@4x.png')
   },
   wln: {
-    normal: path.join(__dirname, '../assets/wln_normal.png'),
     active: path.join(__dirname, '../assets/wln_active.png')
+  },
+  bird: {
+    active: path.join(__dirname, '../assets/bird.png')
   }
 };

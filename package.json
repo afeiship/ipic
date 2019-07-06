@@ -8,6 +8,7 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
+    "install": "rm -rf /Applications/ipic2.app && cp -R dist/ipic2-darwin-x64/ipic2.app /Applications/",
     "icns": "node build/icns.js",
     "pack:osx": "node build/osx.js",
     "pack": "npm run pack:osx",
