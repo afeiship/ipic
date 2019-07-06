@@ -8,12 +8,20 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
-    "start": "electron src/index.js"
+    "clean": "rm -rf dist",
+    "pack": "electron-packager ./ --platform=darwin --arch=x64 --out=./dist --overwrite",
+    "dist": "electron-builder",
+    "start": "electron index.js"
+  },
+  "build": {
+    "appId": "toolkit.finxos.com",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "electron": "^5.0.5",
     "electron-clipboard-extended": "^1.1.1",
     "form-data": "^2.5.0",
     "next-build-form-data": "github:afeiship/next-build-form-data",
@@ -23,6 +31,8 @@
     "node-notifier": "^5.4.0"
   },
   "devDependencies": {
+    "electron": "^5.0.5",
+    "electron-packager": "^14.0.1",
     "husky": "^3.0.0"
   }
 }

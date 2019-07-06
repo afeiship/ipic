@@ -9,5 +9,5 @@ const nx = require('next-js-core2');
 require('next-build-form-data');
 require('next-dump');
 
-const App = require('./app.js');
+const App = require('./src/app.js');
 App.start();

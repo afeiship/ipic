@@ -5,8 +5,6 @@ require('./components/notification');
 const { miaotu, wln } = require('./components/icons');
 const { app, Tray } = require('electron');
 
-console.log(miaotu, wln);
-
 module.exports = nx.declare('ipic.App', {
   statics: {
     init: function() {
