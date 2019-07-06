@@ -9,15 +9,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "pack": "electron-packager ./ --platform=darwin --arch=x64 --out=./dist --overwrite",
+    "pack:osx": "electron-packager . --platform=darwin --out=./dist --icon=./src/assets/app.icns --overwrite",
+    "pack": "npm run pack:osx",
     "dist": "electron-builder",
     "start": "electron index.js"
-  },
-  "build": {
-    "appId": "toolkit.finxos.com",
-    "mac": {
-      "category": "your.app.category.type"
-    }
   },
   "main": "index.js",
   "license": "MIT",
