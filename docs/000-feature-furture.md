@@ -4,6 +4,7 @@
 - [ ] 集成带图片的 menuItem (electron tray menu  customize)
 - [ ] 快捷键的设置
 - [ ] AutoUpdate
+- [ ] uploader 实现成通用的模块，具体哪个业务中用到，引用进来就行了。
 
 
 ## other res
