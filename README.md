@@ -1,7 +1,8 @@
 <p align="center">
   <a href="https://github.com/afeiship/ipic">
-    <img width="500" src="http://ww1.sinaimg.cn/large/006tNc79gy1g4qkx5knl7j303k03kjrk.jpg">
+    <img width="300" src="http://ww1.sinaimg.cn/large/006tNc79gy1g4qkx5knl7j303k03kjrk.jpg">
   </a>
+  <span style="color: #999;"> ipic for miaotu. </span>
 </p>
 
 # ipic
