@@ -9,7 +9,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "pack:osx": "electron-packager . --platform=darwin --out=./dist --icon=./src/assets/app.icns --overwrite",
+    "pack:osx": "electron-packager . 'ipic-release' --platform=darwin --out=./dist --icon=./src/assets/app.icns --overwrite",
     "pack": "npm run pack:osx",
     "dist": "electron-builder",
     "start": "electron index.js"
