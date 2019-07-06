@@ -6,9 +6,14 @@
 - [ ] AutoUpdate
 
 
-
 ## other res
 - https://blog.dcpos.ch/how-to-make-your-electron-app-sexy
 - https://github.com/maxogden/menubar
 - https://coursetro.com/posts/code/120/Creating-and-Using-Windows-in-Electron
 - https://github.com/electron/electron/issues/6277
+
+## resources
+- https://toolinbox.net/iPic/
+- https://www.cnblogs.com/savokiss/p/8744807.html
+- https://www.w3cschool.cn/electronmanual/electronmanual-clipboard.html
+- https://github.com/electron/electron-quick-start
