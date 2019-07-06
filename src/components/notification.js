@@ -1,14 +1,11 @@
 const path = require('path');
 const notifier = require('node-notifier');
 const DEFAULT_OPTIONS = {
-  title: 'Copyed',
-  message: '上传到CDN?',
-  timeout: 10,
-  icon: path.join(__dirname, 'assets/mt_normal@4x.png'),
-  actions: 'OK',
-  closeLabel: 'No,thanks',
-  reply: false
+  title: '复制成功!',
+  message: '已经将URL复制到剪贴板',
+  sound: true
 };
+
 module.exports = nx.declare('ipic.Notification', {
   methods: {
     notify: function(inOptions) {
