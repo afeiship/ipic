@@ -8,3 +8,7 @@
 - https://www.w3cschool.cn/electronmanual/electronmanual-clipboard.html
 - https://github.com/electron/electron-quick-start
 
+
+## todos
+- [ ] support network image url
+- [ ] upload `nativeImage` also filepath
