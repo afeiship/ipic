@@ -4,6 +4,7 @@ const FormData = require('form-data');
 const { app, Menu, Tray, Notification, BrowserWindow } = require('electron');
 const clipboard = require('electron-clipboard-extended');
 const notifier = require('node-notifier');
+const nx = require('next-js-core2');
 
 // get file path from clipboard:
 const upload = require('./services/upload');
@@ -21,10 +22,10 @@ clipboard
       {
         title: 'Copyed',
         message: '上传到CDN?',
-        timeout: 20,
+        timeout: 10,
         icon: path.join(__dirname, 'assets/mt_normal@4x.png'),
-        actions: '好的',
-        closeLabel: '不必啦',
+        actions: 'OK',
+        closeLabel: 'No,thanks',
         reply: false
       },
       (_, response) => {

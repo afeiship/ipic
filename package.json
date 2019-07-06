@@ -17,6 +17,7 @@
     "electron-clipboard-extended": "^1.1.1",
     "form-data": "^2.5.0",
     "next-dump": "github:afeiship/next-dump",
+    "next-js-core2": "github:afeiship/next-js-core2",
     "node-fetch": "^2.6.0",
     "node-notifier": "^5.4.0"
   },
