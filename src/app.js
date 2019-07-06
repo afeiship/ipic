@@ -19,6 +19,7 @@ module.exports = nx.declare('ipic.App', {
       this._notification = new ipic.Notification();
       this._file = new ipic.File();
       this._changed = false;
+      this.config();
     },
     start: function() {
       app.on('ready', () => {
@@ -26,6 +27,9 @@ module.exports = nx.declare('ipic.App', {
         this.clipWatch();
         this.trayWatch();
       });
+    },
+    config: function() {
+      app.dock.hide();
     },
     active: function() {
       this._tray.setImage(miaotu.active);
