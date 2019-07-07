@@ -5,6 +5,7 @@
 - [ ] 快捷键的设置
 - [ ] AutoUpdate
 - [ ] uploader 实现成通用的模块，具体哪个业务中用到，引用进来就行了。
+- [ ] 打开新的浏览器：require("electron").shell.openExternal(link);
 
 
 ## other res
