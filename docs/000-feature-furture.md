@@ -19,3 +19,4 @@
 - https://www.cnblogs.com/savokiss/p/8744807.html
 - https://www.w3cschool.cn/electronmanual/electronmanual-clipboard.html
 - https://github.com/electron/electron-quick-start
+- https://gist.github.com/luizcarraro/2d04d83e66e3f03bef9b2e714ea8c0d7
