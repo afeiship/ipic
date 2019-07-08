@@ -1,8 +1,8 @@
-require('./components/clipboard');
 require('./components/uploader');
 
 // next packages:
 require('next-elec-notification');
+require('next-elec-clipboard');
 
 const { miaotu, bird } = require('./components/icons');
 const { app, Menu, shell, Tray } = require('electron');
@@ -10,7 +10,7 @@ const { app, Menu, shell, Tray } = require('electron');
 module.exports = nx.declare('ipic.App', {
   properties: {
     filepath: function() {
-      return this._clipboard.filepath();
+      return this._clipboard.filepath;
     },
     trayActive: {
       get: function() {
@@ -26,8 +26,8 @@ module.exports = nx.declare('ipic.App', {
   },
   statics: {
     init: function() {
-      this._clipboard = new ipic.Clipboard();
       this._uploader = new ipic.Uploader();
+      this._clipboard = new nx.ElecClipboard();
       this._notification = new nx.ElecNotification({
         title: '复制成功!',
         message: '已经将URL复制到剪贴板',
@@ -62,7 +62,7 @@ module.exports = nx.declare('ipic.App', {
       this.trayActive = false;
     },
     clipWatch: function() {
-      this._clipRes = this._clipboard.watch('image-changed', () => {
+      this._clipboard.on('image-changed', () => {
         this.filepath ? this.active() : this.deactive();
       });
     },
