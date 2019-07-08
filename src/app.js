@@ -1,11 +1,11 @@
 require('./components/clipboard');
 require('./components/uploader');
-require('./components/notification');
-require('./components/file');
+
+// next packages:
+require('next-elec-notification');
 
 const { miaotu, bird } = require('./components/icons');
 const { app, Menu, shell, Tray } = require('electron');
-const fs = require('fs');
 
 module.exports = nx.declare('ipic.App', {
   properties: {
@@ -28,9 +28,11 @@ module.exports = nx.declare('ipic.App', {
     init: function() {
       this._clipboard = new ipic.Clipboard();
       this._uploader = new ipic.Uploader();
-      this._notification = new ipic.Notification();
-      this._file = new ipic.File();
-      this._changed = false;
+      this._notification = new nx.ElecNotification({
+        title: '复制成功!',
+        message: '已经将URL复制到剪贴板',
+        sound: true
+      });
     },
     start: function() {
       app.on('ready', () => {
