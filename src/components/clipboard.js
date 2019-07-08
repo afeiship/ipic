@@ -8,6 +8,9 @@ module.exports = nx.declare('ipic.Clipboard', {
       set: function(inValue) {
         clipboard.writeText(inValue);
       }
+    },
+    image: function() {
+      return clipboard.readImage();
     }
   },
   methods: {
