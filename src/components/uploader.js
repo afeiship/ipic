@@ -16,7 +16,7 @@ module.exports = nx.declare('ipic.Uploader', {
           });
       });
     },
-    buildData: function(inTarget) {
+    build: function(inTarget) {
       const smfile = typeof inTarget === 'string' ? fs.createReadStream(inTarget) : inTarget;
       return nx.buildFormData({
         smfile
