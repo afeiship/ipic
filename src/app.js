@@ -47,13 +47,7 @@ module.exports = nx.declare('ipic.App', {
             this.upload();
           }
         },
-        {
-          label: 'Quit',
-          click: () => {
-            this._tray.destroy();
-            app.quit();
-          }
-        }
+        { label: 'Quit', role: 'quit' }
       ]);
       this._tray.setContextMenu(this._trayContextMenu);
     },
