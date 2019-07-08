@@ -1,6 +1,6 @@
 {
   "name": "ipic2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Ipic lite version",
   "homepage": "https://github.com/afeiship/ipic",
   "author": {
@@ -23,9 +23,7 @@
     "form-data": "^2.5.0",
     "next-base64-to-blob": "github:afeiship/next-base64-to-blob",
     "next-build-form-data": "github:afeiship/next-build-form-data",
-    "next-dump": "github:afeiship/next-dump",
     "next-js-core2": "github:afeiship/next-js-core2",
-    "node-blob": "0.0.2",
     "node-fetch": "^2.6.0",
     "node-notifier": "^5.4.0"
   },
@@ -35,8 +33,10 @@
     "electron": "^5.0.5",
     "electron-packager": "^14.0.1",
     "gulp": "^4.0.2",
+    "gulp-bump": "^3.1.3",
     "gulp-load-plugins": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "husky": "^3.0.0"
+    "husky": "^3.0.0",
+    "next-dump": "github:afeiship/next-dump"
   }
 }
