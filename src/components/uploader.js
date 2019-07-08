@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const FormData = require('form-data');
 const fs = require('fs');
 
 module.exports = nx.declare('ipic.Uploader', {
@@ -18,12 +17,9 @@ module.exports = nx.declare('ipic.Uploader', {
       });
     },
     buildData: function(inPath) {
-      return nx.buildFormData(
-        {
-          smfile: fs.createReadStream(inPath)
-        },
-        FormData
-      );
+      return nx.buildFormData({
+        smfile: fs.createReadStream(inPath)
+      });
     }
   }
 });
