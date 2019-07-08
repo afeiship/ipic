@@ -8,7 +8,7 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
-    "install": "rm -rf /Applications/ipic2.app && cp -R dist/ipic2-darwin-x64/ipic2.app /Applications/",
+    "sys:install": "rm -rf /Applications/ipic2.app && cp -R dist/ipic2-darwin-x64/ipic2.app /Applications/",
     "icns": "node build/icns.js",
     "pack:osx": "node build/osx.js",
     "pack": "npm run pack:osx",
@@ -20,7 +20,6 @@
   "dependencies": {
     "atob": "^2.1.2",
     "electron-clipboard-extended": "^1.1.1",
-    "file-api": "^0.10.4",
     "form-data": "^2.5.0",
     "next-base64-to-blob": "github:afeiship/next-base64-to-blob",
     "next-build-form-data": "github:afeiship/next-build-form-data",

@@ -4,7 +4,7 @@ require('./components/notification');
 require('./components/file');
 
 const { miaotu, bird } = require('./components/icons');
-const { app, Menu, Tray } = require('electron');
+const { app, Menu, shell, Tray } = require('electron');
 
 module.exports = nx.declare('ipic.App', {
   properties: {
@@ -71,7 +71,13 @@ module.exports = nx.declare('ipic.App', {
         this._uploader.upload(data).then((res) => {
           this.deactive();
           this._clipboard.text = res;
-          this._notification.notify({ icon: bird.active });
+          this._notification
+            .notify({ icon: bird.active, actions: '预览'})
+            .then(({ code, data }) => {
+              if (!code && data.status === 'activate') {
+                shell.openExternal(res);
+              }
+            });
         });
       }
     }
