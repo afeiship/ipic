@@ -39,6 +39,7 @@
     "gulp-load-plugins": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "husky": "^3.0.0",
-    "next-dump": "github:afeiship/next-dump"
+    "next-dump": "github:afeiship/next-dump",
+    "rake-git": "github:afeiship/rake-git"
   }
 }
