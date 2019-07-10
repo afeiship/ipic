@@ -26,7 +26,7 @@ module.exports = nx.declare('ipic.App', {
   },
   statics: {
     init: function() {
-      this._uploader = new ipic.TssUploader();
+      this._uploader = new ipic.TssUploader({ path: 'tucloud/assets/ipic-images' });
       this._clipboard = new nx.ElecClipboard();
       this._notification = new nx.ElecNotification({
         title: '复制成功!',
