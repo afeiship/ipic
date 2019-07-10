@@ -1,17 +1,13 @@
-require('./components/uploader');
-
 // next packages:
 require('next-elec-notification');
 require('next-elec-clipboard');
+require('ipic-tss-uploader');
 
 const { miaotu, bird } = require('./components/icons');
 const { app, Menu, shell, Tray } = require('electron');
 
 module.exports = nx.declare('ipic.App', {
   properties: {
-    filepath: function() {
-      return this._clipboard.filepath;
-    },
     trayActive: {
       get: function() {
         return this._trayActive;
@@ -22,11 +18,15 @@ module.exports = nx.declare('ipic.App', {
         this.setContextMenu(inValue);
         this._trayActive = inValue;
       }
+    },
+    dataURL: function() {
+      const image = this._clipboard.image;
+      return image.toDataURL().split(',')[1];
     }
   },
   statics: {
     init: function() {
-      this._uploader = new ipic.Uploader();
+      this._uploader = new ipic.TssUploader();
       this._clipboard = new nx.ElecClipboard();
       this._notification = new nx.ElecNotification({
         title: '复制成功!',
@@ -63,23 +63,21 @@ module.exports = nx.declare('ipic.App', {
     },
     clipWatch: function() {
       this._clipboard.on('image-changed', () => {
-        this.filepath ? this.active() : this.deactive();
+        this.active();
       });
     },
     upload: function() {
-      const filepath = this.filepath;
-      if (filepath) {
-        this._tray.setImage(miaotu.normal);
-        this._uploader.upload(this._uploader.build(filepath)).then((res) => {
-          this.deactive();
-          this._clipboard.text = res;
-          this._notification.notify({ icon: bird.active }).then(({ code, data }) => {
-            if (!code && data.status === 'activate') {
-              shell.openExternal(res);
-            }
-          });
+      const dataURL = this.dataURL;
+      this._tray.setImage(miaotu.normal);
+      this._uploader.upload(dataURL.trim()).then((res) => {
+        this.deactive();
+        this._clipboard.text = res;
+        this._notification.notify({ icon: bird.active }).then(({ code, data }) => {
+          if (!code && data.status === 'activate') {
+            shell.openExternal(res);
+          }
         });
-      }
+      });
     }
   }
 });
