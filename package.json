@@ -10,7 +10,7 @@
   "scripts": {
     "sys:install": "rm -rf /Applications/ipic2.app && cp -R dist/ipic2-darwin-x64/ipic2.app /Applications/",
     "icns": "node build/icns.js",
-    "pack:osx": "node build/osx.js",
+    "pack:osx": "gulp osx:pack",
     "pack": "npm run pack:osx",
     "dist": "electron-builder",
     "start": "electron index.js"
