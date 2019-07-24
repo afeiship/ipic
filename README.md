@@ -7,6 +7,11 @@
 # ipic
 > Ipic lite version.
 
+## description
+- 累了，也要把图背上去
+- 胖了，也不要紧
+- 工作，生活，好好的
+
 ## todos
 - [ ] support network image url
 - [ ] upload `nativeImage` also filepath
